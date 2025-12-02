@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFrag('Formulario Partido')"></head>
+<body class="bg-light">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h4 class="mb-0" th:text="${partido.id == null ? 'Nuevo Partido' : 'Editar Partido'}"></h4>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="${partido.id == null} ? @{/admin/partidos} : @{/admin/partidos/actualizar}"
+                          th:method="${partido.id == null} ? 'post' : 'put'"
+                          enctype="multipart/form-data" th:object="${partido}">
+
+                        <input type="hidden" th:field="*{id}"><input type="hidden" th:field="*{flagHome}"><input type="hidden" th:field="*{flagAway}">
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="fw-bold">Equipo Local</label>
+                                <input type="text" class="form-control" th:field="*{home}" required>
+                                <input type="file" name="fileHome" class="form-control mt-2 text-sm">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold">Equipo Visitante</label>
+                                <input type="text" class="form-control" th:field="*{away}" required>
+                                <input type="file" name="fileAway" class="form-control mt-2 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="fw-bold">Fecha (Texto)</label>
+                                <input type="text" class="form-control" th:field="*{date}" placeholder="Ej: Sab. 12/08">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="fw-bold">Hora</label>
+                                <input type="text" class="form-control" th:field="*{time}" placeholder="21:00">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="fw-bold">Estadio</label>
+                                <input type="text" class="form-control" th:field="*{stadium}">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a th:href="@{/admin/partidos}" class="btn btn-light">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Guardar Partido</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

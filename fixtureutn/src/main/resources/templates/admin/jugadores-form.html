@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFrag('Formulario Jugador')"></head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span th:text="${jugador.id == null ? 'Nuevo Jugador' : 'Editar Jugador'}">Título</span>
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+
+                    <!-- FORMULARIO DINÁMICO (POST o PUT) -->
+                    <form th:action="${jugador.id == null} ? @{/admin/jugadores/guardar} : @{/admin/jugadores/actualizar}"
+                          th:method="${jugador.id == null} ? 'post' : 'put'"
+                          enctype="multipart/form-data"
+                          th:object="${jugador}">
+
+                        <!-- Campos ocultos necesarios -->
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{photoPath}">
+                        <input type="hidden" th:field="*{countryFlag}">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nombre Completo</label>
+                            <input type="text" class="form-control form-control-lg" th:field="*{name}" placeholder="Ej: Lionel Messi" required>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Posición</label>
+                                <select class="form-select" th:field="*{position}">
+                                    <option value="Arquero">Arquero</option>
+                                    <option value="Defensa">Defensa</option>
+                                    <option value="Centrocampista">Centrocampista</option>
+                                    <option value="Delantero">Delantero</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Edad</label>
+                                <input type="number" class="form-control" th:field="*{age}" required>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Sección Imágenes -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Foto del Jugador</label>
+                                <input type="file" name="photoFile" class="form-control" accept="image/*">
+                                <div th:if="${jugador.photoPath != null}" class="mt-2">
+                                    <small class="text-muted">Actual:</small>
+                                    <img th:src="@{${jugador.photoPath}}" height="50" class="rounded">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Bandera País</label>
+                                <input type="file" name="flagFile" class="form-control" accept="image/*">
+                                <div th:if="${jugador.countryFlag != null}" class="mt-2">
+                                    <small class="text-muted">Actual:</small>
+                                    <img th:src="@{${jugador.countryFlag}}" height="30" class="border">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-5">
+                            <a th:href="@{/admin/jugadores}" class="btn btn-light">Cancelar</a>
+                            <button type="submit" class="btn btn-primary px-4 fw-bold">
+                                <i class="fas fa-save me-1"></i> Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

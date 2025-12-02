@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFrag('Panel Administración')"></head>
+<body class="bg-light">
+
+<!-- Navbar Exclusivo Admin -->
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1"><i class="fas fa-user-shield me-2"></i>Admin Panel</span>
+        <div class="d-flex align-items-center">
+            <span class="text-white me-3 small">Hola, Admin</span>
+            <form th:action="@{/logout}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-sign-out-alt"></i> Salir
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="mb-4 fw-bold text-dark">Panel de Control</h2>
+    <div class="row g-4">
+
+        <!-- Opción JUGADORES -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center hover-card">
+                <div class="card-body p-4">
+                    <div class="bg-warning bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-users fa-3x text-warning"></i>
+                    </div>
+                    <h4>Jugadores</h4>
+                    <p class="text-muted small">Gestionar plantel profesional.</p>
+                    <a th:href="@{/admin/jugadores}" class="btn btn-warning w-100 fw-bold">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción NOTICIAS -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center hover-card">
+                <div class="card-body p-4">
+                    <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-newspaper fa-3x text-success"></i>
+                    </div>
+                    <h4>Noticias</h4>
+                    <p class="text-muted small">Publicar novedades.</p>
+                    <!-- Apunta al controlador que crearás luego -->
+                    <a th:href="@{/admin/noticias}" class="btn btn-success w-100 fw-bold">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción PARTIDOS -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center hover-card">
+                <div class="card-body p-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-calendar-day fa-3x text-primary"></i>
+                    </div>
+                    <h4>Partidos</h4>
+                    <p class="text-muted small">Actualizar fixture.</p>
+                    <!-- Apunta al controlador que crearás luego -->
+                    <a th:href="@{/admin/partidos}" class="btn btn-primary w-100 fw-bold">Entrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

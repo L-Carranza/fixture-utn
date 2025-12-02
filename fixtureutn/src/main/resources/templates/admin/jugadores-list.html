@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFrag('Admin - Jugadores')"></head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Gestión de Jugadores</h3>
+        <div>
+            <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+            <a th:href="@{/admin/jugadores/nuevo}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Jugador
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                <tr>
+                    <th style="width: 80px;">Foto</th>
+                    <th>Nombre</th>
+                    <th>Posición</th>
+                    <th>Edad</th>
+                    <th class="text-end pe-4">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${players}">
+                    <td>
+                        <img th:if="${p.photoPath != null}" th:src="@{${p.photoPath}}"
+                             class="rounded-circle border" style="width: 40px; height: 40px; object-fit: cover;">
+                    </td>
+                    <td class="fw-bold" th:text="${p.name}">Nombre</td>
+                    <td><span class="badge bg-secondary" th:text="${p.position}">Pos</span></td>
+                    <td th:text="${p.age}">00</td>
+                    <td class="text-end pe-4">
+                        <!-- BOTÓN EDITAR (GET) -->
+                        <a th:href="@{/admin/jugadores/editar/{id}(id=${p.id})}"
+                           class="btn btn-sm btn-outline-primary me-1" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <!-- BOTÓN BORRAR (DELETE) - Formulario Oculto -->
+                        <form th:action="@{/admin/jugadores/borrar/{id}(id=${p.id})}"
+                              th:method="delete" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('¿Estás seguro de eliminar a este jugador?');" title="Eliminar">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Mensaje si lista vacía -->
+        <div th:if="${players.empty}" class="p-4 text-center text-muted">
+            No hay jugadores registrados.
+        </div>
+    </div>
+</div>
+</body>
+</html>

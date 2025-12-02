@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- FRAGMENTO DEL HEAD (Estilos Globales) -->
+<head th:fragment="headFrag(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">FixtureUTN</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}" rel="stylesheet">
+
+    <!-- Google Fonts: Poppins (Fuente moderna y limpia) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de colores para consistencia */
+        :root {
+            --utn-blue-dark: #003366;
+            --utn-blue-light: #0d6efd;
+            --utn-accent: #ffc107;
+        }
+
+        /* Aplicar fuente a todo el sitio */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa; /* Fondo gris muy suave por defecto */
+        }
+
+        /* Estilos del Navbar personalizado */
+        .navbar-custom {
+            background: linear-gradient(90deg, #004d98 0%, #002f5d 100%); /* Azul profundo profesional */
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin: 0 5px;
+            border-radius: 50px; /* Bordes redondeados tipo píldora */
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-link i {
+            margin-right: 6px;
+            font-size: 0.9em;
+        }
+
+        /* Botón hamburguesa (móvil) */
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- FRAGMENTO DEL NAVBAR (Menú de navegación) -->
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+            <i class="fas fa-futbol me-2 text-warning"></i> <!-- Icono amarillo para resaltar -->
+            FixtureUTN
+        </a>
+
+        <!-- Botón Móvil -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces -->
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">
+                        <i class="fas fa-home"></i>Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/fixture/partidos}">
+                        <i class="fas fa-calendar-alt"></i>Partidos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/fixture/noticias}">
+                        <i class="fas fa-newspaper"></i>Noticias
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/fixture/jugadores}">
+                        <i class="fas fa-users"></i>Jugadores
+                    </a>
+                </li>
+
+                <!-- Botón de Login (Preparando para la parte de Autenticación) -->
+                <!-- Lo dejamos comentado o visible pero inactivo por ahora -->
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <a class="btn btn-warning btn-sm fw-bold text-dark px-3 rounded-pill" href="#">
+                        <i class="fas fa-sign-in-alt me-1"></i> Admin
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

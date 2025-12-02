@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFrag('Admin - Partidos')"></head>
+<body class="bg-light">
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Gestión de Fixture</h3>
+        <div>
+            <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary me-2">Volver</a>
+            <a th:href="@{/admin/partidos/nuevo}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Partido</a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <table class="table table-hover align-middle mb-0 text-center">
+            <thead class="table-dark">
+            <tr>
+                <th>Local</th>
+                <th>VS</th>
+                <th>Visitante</th>
+                <th>Día/Hora</th>
+                <th>Estadio</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${partidos}">
+                <td>
+                    <span th:text="${p.home}" class="fw-bold me-2"></span>
+                    <img th:src="@{${p.flagHome}}" width="25">
+                </td>
+                <td class="text-muted fw-bold">VS</td>
+                <td>
+                    <img th:src="@{${p.flagAway}}" width="25" class="me-2">
+                    <span th:text="${p.away}" class="fw-bold"></span>
+                </td>
+                <td>
+                    <div th:text="${p.date}" class="small text-primary fw-bold"></div>
+                    <div th:text="${p.time}"></div>
+                </td>
+                <td th:text="${p.stadium}" class="small text-muted">Estadio</td>
+                <td>
+                    <a th:href="@{/admin/partidos/editar/{id}(id=${p.id})}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+                    <form th:action="@{/admin/partidos/borrar/{id}(id=${p.id})}" th:method="delete" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Borrar?')"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
