@@ -7,7 +7,7 @@
         <h3>Gestión de Fixture</h3>
         <div>
             <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary me-2">Volver</a>
-            <a th:href="@{/admin/partidos/nuevo}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Partido</a>
+            <a th:href="@{/admin/matches/nuevo}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Partido</a>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="p : ${partidos}">
+            <tr th:each="p : ${matches}">
                 <td>
                     <span th:text="${p.home}" class="fw-bold me-2"></span>
                     <img th:src="@{${p.flagHome}}" width="25">
@@ -40,8 +40,8 @@
                 </td>
                 <td th:text="${p.stadium}" class="small text-muted">Estadio</td>
                 <td>
-                    <a th:href="@{/admin/partidos/editar/{id}(id=${p.id})}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
-                    <form th:action="@{/admin/partidos/borrar/{id}(id=${p.id})}" th:method="delete" style="display:inline;">
+                    <a th:href="@{/admin/matches/editar/{id}(id=${p.id})}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+                    <form th:action="@{/admin/matches/borrar/{id}(id=${p.id})}" th:method="delete" style="display:inline;">
                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Borrar?')"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>

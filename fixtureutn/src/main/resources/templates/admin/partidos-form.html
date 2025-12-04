@@ -7,12 +7,12 @@
         <div class="col-lg-8">
             <div class="card shadow border-0">
                 <div class="card-header bg-primary text-white py-3">
-                    <h4 class="mb-0" th:text="${partido.id == null ? 'Nuevo Partido' : 'Editar Partido'}"></h4>
+                    <h4 class="mb-0" th:text="${match.id == null ? 'Nuevo Partido' : 'Editar Partido'}"></h4>
                 </div>
                 <div class="card-body p-4">
-                    <form th:action="${partido.id == null} ? @{/admin/partidos} : @{/admin/partidos/actualizar}"
-                          th:method="${partido.id == null} ? 'post' : 'put'"
-                          enctype="multipart/form-data" th:object="${partido}">
+                    <form th:action="${match.id == null} ? @{/admin/matches/guardar} : @{/admin/matches/actualizar}"
+                          th:method="${match.id == null} ? 'post' : 'put'"
+                          enctype="multipart/form-data" th:object="${match}">
 
                         <input type="hidden" th:field="*{id}"><input type="hidden" th:field="*{flagHome}"><input type="hidden" th:field="*{flagAway}">
 
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end gap-2 mt-4">
-                            <a th:href="@{/admin/partidos}" class="btn btn-light">Cancelar</a>
+                            <a th:href="@{/admin/matches}" class="btn btn-light">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Guardar Partido</button>
                         </div>
                     </form>

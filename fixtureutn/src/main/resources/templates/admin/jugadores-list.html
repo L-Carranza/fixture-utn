@@ -10,7 +10,7 @@
             <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary me-2">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
-            <a th:href="@{/admin/jugadores/nuevo}" class="btn btn-primary">
+            <a th:href="@{/admin/players/nuevo}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Nuevo Jugador
             </a>
         </div>
@@ -39,16 +39,16 @@
                     <td th:text="${p.age}">00</td>
                     <td class="text-end pe-4">
                         <!-- BOTÓN EDITAR (GET) -->
-                        <a th:href="@{/admin/jugadores/editar/{id}(id=${p.id})}"
+                        <a th:href="@{/admin/players/editar/{id}(id=${p.id})}"
                            class="btn btn-sm btn-outline-primary me-1" title="Editar">
                             <i class="fas fa-edit"></i>
                         </a>
 
                         <!-- BOTÓN BORRAR (DELETE) - Formulario Oculto -->
-                        <form th:action="@{/admin/jugadores/borrar/{id}(id=${p.id})}"
+                        <form th:action="@{/admin/players/borrar/{id}(id=${p.id})}"
                               th:method="delete" style="display:inline;">
                             <button type="submit" class="btn btn-sm btn-outline-danger"
-                                    onclick="return confirm('¿Estás seguro de eliminar a este jugador?');" title="Eliminar">
+                                    onclick="return confirm('¿Estás seguro de eliminar a este player?');" title="Eliminar">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>

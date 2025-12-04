@@ -1,6 +1,6 @@
 package com.Fixture.fixtureutn.model;
 
-public class Noticia {
+public class News {
 
     private Integer id;
     private String title;
@@ -9,12 +9,12 @@ public class Noticia {
     private String timeAgo;
     private String imagePath;
 
-    public Noticia() {
+    public News() {
 
 
     }
 
-    public Noticia(Integer id, String title, String summary, String source, String timeAgo, String imagePath) {
+    public News(Integer id, String title, String summary, String source, String timeAgo, String imagePath) {
         this.id = id;
         this.title = title;
         this.summary = summary;

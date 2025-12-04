@@ -1,6 +1,6 @@
 package com.Fixture.fixtureutn.model;
 
-public class Partido {
+public class Match {
     private Integer id;
     private String home;
     private String away;
@@ -10,13 +10,13 @@ public class Partido {
     private String flagHome;
     private String flagAway;
 
-    public Partido () {
+    public Match() {
 
 
     }
 
-   public Partido (Integer id, String home,String away,String date,
-                   String time,String stadium,String flagHome,String flagAway){
+   public Match(Integer id, String home, String away, String date,
+                String time, String stadium, String flagHome, String flagAway){
         this.id=id;
         this.home=home;
         this.away=away;

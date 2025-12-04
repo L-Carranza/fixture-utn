@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: headFrag('Noticias')"></head>
+<head th:replace="~{fragments/header :: headFrag('Noticias')}"></head>
 <body class="bg-light">
+<nav th:replace="~{fragments/header :: nav}"></nav>
+
 <div class="container py-4">
-    <div class="row g-3">
-        <div class="col-12" th:each="n : ${news}">
-            <div class="card mb-2">
-                <div class="row g-0 align-items-center">
-                    <div class="col-9 p-3">
-                        <h5 class="mb-1" th:text="${n.title}">Título</h5>
-                        <div class="small text-muted" th:text="${n.source} + ' • ' + ${n.timeAgo}">Fuente • tiempo</div>
-                    </div>
-                    <div class="col-3">
-                        <img th:if="${n.imagePath!=null}" th:src="@{${n.imagePath}}" class="img-fluid rounded-end" alt="">
+    <div class="card border-0 shadow-sm">
+
+        <!-- AQUÍ INYECTAMOS LOS BOTONES (Le decimos que estamos en 'news') -->
+        <div th:replace="~{fragments/tabs :: navTabs('news')}"></div>
+
+        <div class="card-body p-4 bg-light"> <!-- Un poco de fondo gris interno -->
+            <div class="row g-4">
+                <div class="col-lg-10 mx-auto" th:each="n : ${news}">
+                    <!-- Tu diseño de tarjeta de noticias va aquí -->
+                    <div class="card border-0 shadow-sm overflow-hidden h-100">
+                        <div class="row g-0">
+                            <div class="col-md-4 position-relative">
+                                <img th:if="${n.imagePath!=null}" th:src="@{${n.imagePath}}" class="h-100 w-100" style="object-fit: cover; min-height: 200px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold" th:text="${n.title}">Título</h5>
+                                    <p class="card-text text-muted" th:text="${n.summary}">Resumen</p>
+                                    <small class="text-muted" th:text="${n.source} + ' • ' + ${n.timeAgo}">Info</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Fragmento: Recibe un parámetro llamado 'activeTab' -->
+<div th:fragment="navTabs(activeTab)" class="card-header p-0 border-0 bg-primary overflow-hidden">
+    <ul class="nav nav-tabs nav-fill border-0">
+
+        <!-- Botón PARTIDOS -->
+        <li class="nav-item">
+            <a class="nav-link border-0 rounded-0 py-3 fw-bold transition-all"
+               th:classappend="${activeTab == 'matches'} ? 'active text-primary bg-white' : 'text-white-50 hover-white'"
+               th:href="@{/api/fixture/matches}">
+                <i class="fas fa-calendar-alt me-2"></i>PARTIDOS
+            </a>
+        </li>
+
+        <!-- Botón NOTICIAS -->
+        <li class="nav-item">
+            <a class="nav-link border-0 rounded-0 py-3 fw-bold transition-all"
+               th:classappend="${activeTab == 'news'} ? 'active text-success bg-white' : 'text-white-50 hover-white'"
+               th:href="@{/api/fixture/news}">
+                <i class="fas fa-newspaper me-2"></i>NOTICIAS
+            </a>
+        </li>
+
+        <!-- Botón JUGADORES -->
+        <li class="nav-item">
+            <a class="nav-link border-0 rounded-0 py-3 fw-bold transition-all"
+               th:classappend="${activeTab == 'players'} ? 'active text-warning bg-white' : 'text-white-50 hover-white'"
+               th:href="@{/api/fixture/players}">
+                <i class="fas fa-users me-2"></i>JUGADORES
+            </a>
+        </li>
+    </ul>
+
+    <!-- Estilos CSS locales para este componente -->
+    <style>
+        .hover-white:hover { color: white !important; background-color: rgba(255,255,255,0.1); }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</div>
+
+</body>
+</html>

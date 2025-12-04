@@ -22,44 +22,41 @@ public class HomeController {
 @GetMapping ("/")
 public String root (Model model) {
 
-    model.addAttribute("matches",fixtureService.findAllPartidos());
-    model.addAttribute("news",fixtureService.findAllNoticias());
-    model.addAttribute("players",fixtureService.findAllJugadores());
+    model.addAttribute("matches",fixtureService.findAllMatches());
+    model.addAttribute("news",fixtureService.findAllNews());
+    model.addAttribute("players",fixtureService.findAllPlayers());
 
     return "home";
-
-
 }
 
 @GetMapping ("/home")
 
 public String homePage (Model model){
-
-    model.addAttribute("matches", fixtureService.findAllPartidos());
-    model.addAttribute("news",fixtureService.findAllNoticias());
-    model.addAttribute("players", fixtureService.findAllJugadores());
+    model.addAttribute("matches", fixtureService.findAllMatches());
+    model.addAttribute("news",fixtureService.findAllNews());
+    model.addAttribute("players", fixtureService.findAllPlayers());
 
     return "home"; // html
 
 }
-@GetMapping ("/partidos")
-public String partidos (Model model){
+@GetMapping ("/matches")
+public String matches (Model model){
 
-    model.addAttribute("matches" , fixtureService.findAllPartidos());
+    model.addAttribute("matches" , fixtureService.findAllMatches());
 
 return "partidos";
 }
 
-      @GetMapping ("/noticias")
-        public String noticias (Model model){
+      @GetMapping ("/news")
+        public String news (Model model){
 
-            model.addAttribute("news",fixtureService.findAllNoticias());
+            model.addAttribute("news",fixtureService.findAllNews());
 
             return "noticias";
         }
-    @GetMapping("/jugadores")
-    public String jugadores(Model model) {
-        var players = fixtureService.findAllJugadores();
+    @GetMapping("/players")
+    public String players (Model model) {
+        var players = fixtureService.findAllPlayers();
 
         System.out.println("=== DEBUG MEJORADO ===");
         System.out.println("Total jugadores: " + players.size());

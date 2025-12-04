@@ -7,7 +7,7 @@
         <h3>Gestión de Noticias</h3>
         <div>
             <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary me-2">Volver</a>
-            <a th:href="@{/admin/noticias/nuevo}" class="btn btn-success"><i class="fas fa-plus"></i> Nueva Noticia</a>
+            <a th:href="@{/admin/news/nuevo}" class="btn btn-success"><i class="fas fa-plus"></i> Nueva Noticia</a>
         </div>
     </div>
 
@@ -23,14 +23,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="n : ${noticias}">
+            <tr th:each="n : ${news}">
                 <td><img th:src="@{${n.imagePath}}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px;"></td>
                 <td th:text="${n.title}" class="fw-bold">Título</td>
                 <td th:text="${n.source}">Fuente</td>
                 <td th:text="${n.timeAgo}">Tiempo</td>
                 <td class="text-end pe-4">
-                    <a th:href="@{/admin/noticias/editar/{id}(id=${n.id})}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
-                    <form th:action="@{/admin/noticias/borrar/{id}(id=${n.id})}" th:method="delete" style="display:inline;">
+                    <a th:href="@{/admin/news/editar/{id}(id=${n.id})}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+                    <form th:action="@{/admin/news/borrar/{id}(id=${n.id})}" th:method="delete" style="display:inline;">
                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Borrar?')"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>

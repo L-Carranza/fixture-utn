@@ -1,8 +1,6 @@
 package com.Fixture.fixtureutn.model;
 
-import org.springframework.context.annotation.Primary;
-
-public class Jugador {
+public class Player {
     private Integer id;
     private String name;
     private String position;
@@ -11,12 +9,12 @@ public class Jugador {
     private String photoPath;
 
 
-    public Jugador () {
+    public Player() {
 
 
     }
 
-    public Jugador(Integer id, String name, String position, Integer age, String countryFlag, String photoPath) {
+    public Player(Integer id, String name, String position, Integer age, String countryFlag, String photoPath) {
         this.id = id;
         this.name = name;
         this.position = position;

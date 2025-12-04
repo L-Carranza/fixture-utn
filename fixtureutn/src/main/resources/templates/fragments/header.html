@@ -98,34 +98,44 @@
         <!-- Enlaces -->
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center">
+
+                <!-- 1. BOTÓN INICIO (Público) -->
+                <!-- Apunta a la raíz "/" para que vaya al Home público -->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">
+                    <a class="nav-link" th:href="@{/api/fixture/home}">
                         <i class="fas fa-home"></i>Inicio
                     </a>
                 </li>
+
+                <!-- 2. BOTÓN PARTIDOS -->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/api/fixture/partidos}">
+                    <a class="nav-link" th:href="@{/api/fixture/matches}">
                         <i class="fas fa-calendar-alt"></i>Partidos
                     </a>
                 </li>
+
+                <!-- 3. BOTÓN NOTICIAS -->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/api/fixture/noticias}">
+                    <a class="nav-link" th:href="@{/api/fixture/news}">
                         <i class="fas fa-newspaper"></i>Noticias
                     </a>
                 </li>
+
+                <!-- 4. BOTÓN JUGADORES -->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/api/fixture/jugadores}">
+                    <a class="nav-link" th:href="@{/api/fixture/players}">
                         <i class="fas fa-users"></i>Jugadores
                     </a>
                 </li>
 
-                <!-- Botón de Login (Preparando para la parte de Autenticación) -->
-                <!-- Lo dejamos comentado o visible pero inactivo por ahora -->
+                <!-- 5. BOTÓN ADMIN (Privado) -->
+                <!-- Apunta a "/admin/dashboard". Si no estás logueado, Spring Security te pedirá login solo. -->
                 <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                    <a class="btn btn-warning btn-sm fw-bold text-dark px-3 rounded-pill" href="#">
-                        <i class="fas fa-sign-in-alt me-1"></i> Admin
+                    <a class="btn btn-warning btn-sm fw-bold text-dark px-3 rounded-pill" th:href="@{/admin/dashboard}">
+                        <i class="fas fa-user-shield me-1"></i> Admin
                     </a>
                 </li>
+
             </ul>
         </div>
     </div>

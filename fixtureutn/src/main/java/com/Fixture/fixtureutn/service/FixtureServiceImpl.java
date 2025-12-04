@@ -1,10 +1,9 @@
 package com.Fixture.fixtureutn.service;
 
 
-import com.Fixture.fixtureutn.model.Jugador;
-import com.Fixture.fixtureutn.model.Noticia;
-import com.Fixture.fixtureutn.model.Partido;
-import jakarta.servlet.http.Part;
+import com.Fixture.fixtureutn.model.Match;
+import com.Fixture.fixtureutn.model.News;
+import com.Fixture.fixtureutn.model.Player;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +15,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Primary
 public class FixtureServiceImpl implements I_FixtureService {
 
-    private final List<Partido> partidos = new ArrayList<>();
-    private final List<Noticia> noticias = new ArrayList<>();
-    private final List<Jugador> jugadores = new ArrayList<>();
+    private final List<Match> matches = new ArrayList<>();
+    private final List<News> news = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
 
     // Contadores atomicos para generar id unicos
-    private final AtomicInteger partidoIdCounter = new AtomicInteger(0);
-    private final AtomicInteger noticiaIdCounter = new AtomicInteger(0);
-    private final AtomicInteger jugadorIdCounter = new AtomicInteger(0);
+    private final AtomicInteger matchesIdCounter = new AtomicInteger(0);
+    private final AtomicInteger newsIdCounter = new AtomicInteger(0);
+    private final AtomicInteger playerIdCounter = new AtomicInteger(0);
 
 
     public FixtureServiceImpl() {
@@ -37,38 +36,38 @@ public class FixtureServiceImpl implements I_FixtureService {
         // y usar esas rutas. Por ahora, las rutas que tienes funcionarán si las imágenes existen.
 
 //PARTIDOS
-        partidos.add(new Partido(partidoIdCounter.incrementAndGet(),"Brazil","Bolivia","Vie., 14/6","21:30","Estadio X","/img/partidos/brazil.png","/img/partidos/bolivia.png"));
-        partidos.add(new Partido(partidoIdCounter.incrementAndGet(),"Argentina","Colombia","Sab., 13/4","20:00","Estadio A","/img/partidos/argentina.jfif","/img/partidos/colombia.jpg"));
-        partidos.add(new Partido(partidoIdCounter.incrementAndGet(),"Talleres","Belgrano","Lun., 24/7","22:00","Estadio Mario Alberto Kempes","/img/partidos/talleres.jfif","/img/partidos/belgrano.png"));
-        partidos.add(new Partido(partidoIdCounter.incrementAndGet(),"Boca","River","Mar., 31/7","23:00","Estadio Z","/img/partidos/boca.png","/img/partidos/river.png"));
-        partidos.add(new Partido(partidoIdCounter.incrementAndGet(),"Instituto","Belgrano","Mie., 14/6","21:30","Estadio X","/img/partidos/instituto.png","/img/partidos/belgrano.png"));
+        matches.add(new Match(matchesIdCounter.incrementAndGet(),"Brazil","Bolivia","Vie., 14/6","21:30","Estadio X","/img/partidos/brazil.png","/img/partidos/bolivia.png"));
+        matches.add(new Match(matchesIdCounter.incrementAndGet(),"Argentina","Colombia","Sab., 13/4","20:00","Estadio A","/img/partidos/argentina.jfif","/img/partidos/colombia.jpg"));
+        matches.add(new Match(matchesIdCounter.incrementAndGet(),"Talleres","Belgrano","Lun., 24/7","22:00","Estadio Mario Alberto Kempes","/img/partidos/talleres.jfif","/img/partidos/belgrano.png"));
+        matches.add(new Match(matchesIdCounter.incrementAndGet(),"Boca","River","Mar., 31/7","23:00","Estadio Z","/img/partidos/boca.png","/img/partidos/river.png"));
+        matches.add(new Match(matchesIdCounter.incrementAndGet(),"Instituto","Belgrano","Mie., 14/6","21:30","Estadio X","/img/partidos/instituto.png","/img/partidos/belgrano.png"));
 
 
         //NOTICIAS
 
-        noticias.add(new Noticia (noticiaIdCounter.incrementAndGet(), "Elegí los 11 para el debut de la Selección", "Resumen o bajada corta.", "Olé", "hace 31 minutos", "/img/noticias/noticia1.png"));
-        noticias.add(new Noticia(noticiaIdCounter.incrementAndGet(), "Las duplas en las habitaciones...", "Bajada breve.", "Infobae", "hace 17 horas", "/img/noticias/noticia2.png"));
-        noticias.add(new Noticia(noticiaIdCounter.incrementAndGet(), "\"Queremos traer la Copa\"", "Entrevista breve.", "Olé", "hace 49 minutos", "/img/noticias/noticia3.png"));
+        news.add(new News(newsIdCounter.incrementAndGet(), "Elegí los 11 para el debut de la Selección", "Resumen o bajada corta.", "Olé", "hace 31 minutos", "/img/noticias/noticia1.png"));
+        news.add(new News(newsIdCounter.incrementAndGet(), "Las duplas en las habitaciones...", "Bajada breve.", "Infobae", "hace 17 horas", "/img/noticias/noticia2.png"));
+        news.add(new News(newsIdCounter.incrementAndGet(), "\"Queremos traer la Copa\"", "Entrevista breve.", "Olé", "hace 49 minutos", "/img/noticias/noticia3.png"));
 
         //Jugadores
 
-        jugadores.add(new Jugador (jugadorIdCounter.incrementAndGet(), "Lionel Messi", "Delantero", 36, "/img/jugadores/messi.png", "/img/jugadores/messi.png"));
-        jugadores.add(new Jugador(jugadorIdCounter.incrementAndGet(), "Carlos Tevez", "Delantero", 32, "/img/jugadores/tevez.png", "/img/jugadores/tevez.png"));
-        jugadores.add(new Jugador(jugadorIdCounter.incrementAndGet(), "Luis Angulo", "Delantero", 27, "/img//jugadores/angulo.png", "/img/jugadores/angulo.png"));
-        jugadores.add(new Jugador(jugadorIdCounter.incrementAndGet(), "Juan Portilla", "Centrocampista", 29, "/img//jugadores/portilla.png", "/img/jugadores/portilla.png"));
-        jugadores.add(new Jugador (jugadorIdCounter.incrementAndGet(), "Emanuel Reynoso", "Centrocampista", 30, "/img/jugadores/reynoso.png", "/img/jugadores/reynoso.png"));
-        jugadores.add(new Jugador(jugadorIdCounter.incrementAndGet(), "Zelarayan", "Delantero", 33, "/img/jugadores/escudobelgrano.png", "/img/jugadores/zelarayan.jpg"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Lionel Messi", "Delantero", 36, "/img/jugadores/messi.png", "/img/jugadores/messi.png"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Carlos Tevez", "Delantero", 32, "/img/jugadores/tevez.png", "/img/jugadores/tevez.png"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Luis Angulo", "Delantero", 27, "/img//jugadores/angulo.png", "/img/jugadores/angulo.png"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Juan Portilla", "Centrocampista", 29, "/img//jugadores/portilla.png", "/img/jugadores/portilla.png"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Emanuel Reynoso", "Centrocampista", 30, "/img/jugadores/reynoso.png", "/img/jugadores/reynoso.png"));
+        players.add(new Player(playerIdCounter.incrementAndGet(), "Zelarayan", "Delantero", 33, "/img/jugadores/escudobelgrano.png", "/img/jugadores/zelarayan.jpg"));
 
     }
     @Override
-    public List <Partido> findAllPartidos () {
+    public List <Match> findAllMatches () {
 
-        return partidos;
+        return matches;
     }
 
     @Override
-    public Partido getPartidoId(Integer id) {
-        for (Partido p : partidos){
+    public Match getMatchId(Integer id) {
+        for (Match p : matches){
 
             if (p.getId()==id){
 
@@ -82,27 +81,27 @@ public class FixtureServiceImpl implements I_FixtureService {
     }
 
     @Override
-    public Partido postPartido (Partido partido){
-        partido.setId(partidoIdCounter.incrementAndGet());
+    public Match postMatch (Match match){
+        match.setId(matchesIdCounter.incrementAndGet());
 
-       partidos.add(partido);
+       matches.add(match);
 
-       return partido;
+       return match;
 
         }
         @Override
-        public Partido putPartido (Partido partido){
+        public Match putMatch (Match match){
 
-        for (Partido p : partidos){
+        for (Match p : matches){
 
-            if (p.getId()==partido.getId()){
-                p.setAway(partido.getAway());
-                p.setDate(partido.getDate());
-                p.setFlagAway(partido.getFlagAway());
-                p.setHome(partido.getHome());
-                p.setFlagHome(partido.getFlagHome());
-                p.setTime(partido.getTime());
-                p.setStadium(partido.getStadium());
+            if (p.getId()== match.getId()){
+                p.setAway(match.getAway());
+                p.setDate(match.getDate());
+                p.setFlagAway(match.getFlagAway());
+                p.setHome(match.getHome());
+                p.setFlagHome(match.getFlagHome());
+                p.setTime(match.getTime());
+                p.setStadium(match.getStadium());
 
                 return p;
 
@@ -113,13 +112,13 @@ public class FixtureServiceImpl implements I_FixtureService {
 
     }
 @Override
-    public Partido deletePartidoId (Integer id){
+    public Match deleteMatchId (Integer id){
 
-        for (Partido p : partidos){
+        for (Match p : matches){
 
             if (p.getId()==id){
 
-                partidos.remove(p);
+                matches.remove(p);
 
                 return p;
             }
@@ -128,34 +127,34 @@ public class FixtureServiceImpl implements I_FixtureService {
         return null;
     }
     @Override
-    public Partido patchProduct (Partido partido) {
+    public Match patchMatch (Match match) {
 
-        for (Partido p : partidos) {
+        for (Match p : matches) {
 
-            if (p.getId() == partido.getId()) {
+            if (p.getId() == match.getId()) {
 
-                if (partido.getHome() != null) {
+                if (match.getHome() != null) {
 
-                    p.setHome(partido.getHome());
+                    p.setHome(match.getHome());
 
                 }
-                if (partido.getAway() != null) {
+                if (match.getAway() != null) {
 
-                    p.setAway(partido.getAway());
+                    p.setAway(match.getAway());
                 }
-                if (partido.getDate() != null) {
+                if (match.getDate() != null) {
 
-                    p.setDate(partido.getDate());
-                }
-
-                if (partido.getTime() != null) {
-
-                    p.setTime(partido.getTime());
+                    p.setDate(match.getDate());
                 }
 
-                if (partido.getStadium() != null) {
+                if (match.getTime() != null) {
 
-                    p.setStadium(partido.getStadium());
+                    p.setTime(match.getTime());
+                }
+
+                if (match.getStadium() != null) {
+
+                    p.setStadium(match.getStadium());
                 }
 
                 return p;
@@ -166,13 +165,13 @@ public class FixtureServiceImpl implements I_FixtureService {
         return null;
     }
 @Override
-    public List <Noticia> findAllNoticias () {
+    public List<News> findAllNews () {
 
-        return noticias;
+        return news;
     }
 @Override
-    public Noticia getNoticiaId(Integer id) {
-        for (Noticia n : noticias){
+    public News getNewsId(Integer id) {
+        for (News n : news){
 
             if (n.getId()==id){
 
@@ -185,26 +184,26 @@ public class FixtureServiceImpl implements I_FixtureService {
 
     }
     @Override
-    public Noticia postNoticia (Noticia noticia){
-        noticia.setId(noticiaIdCounter.incrementAndGet());
+    public News postNews (News news){
+        news.setId(newsIdCounter.incrementAndGet());
 
-        noticias.add(noticia);
+        this.news.add(news);
 
-        return noticia;
+        return news;
 
     }
     @Override
-    public Noticia putNoticia (Noticia noticia){
+    public News putNews (News news){
 
-        for (Noticia n : noticias){
+        for (News n : this.news){
 
-            if (n.getId()==noticia.getId()){
+            if (n.getId()== news.getId()){
 
-                n.setTitle(noticia.getTitle());
-                n.setSummary(noticia.getSummary());
-                n.setSource(noticia.getSource());
-                n.setTimeAgo(noticia.getTimeAgo());
-                n.setImagePath(noticia.getImagePath());
+                n.setTitle(news.getTitle());
+                n.setSummary(news.getSummary());
+                n.setSource(news.getSource());
+                n.setTimeAgo(news.getTimeAgo());
+                n.setImagePath(news.getImagePath());
 
                 return n;
             }
@@ -215,13 +214,13 @@ public class FixtureServiceImpl implements I_FixtureService {
     }
 
     @Override
-    public Noticia deleteNoticiaId (Integer id){
+    public News deleteNewsId (Integer id){
 
-        for (Noticia n : noticias){
+        for (News n : news){
 
             if (n.getId()==id){
 
-                noticias.remove(n);
+                news.remove(n);
 
                 return n;
             }
@@ -229,29 +228,29 @@ public class FixtureServiceImpl implements I_FixtureService {
 
         return null;
     }
-    public Noticia patchNoticia (Noticia noticia){
+    public News patchNews (News news){
 
-        for (Noticia n : noticias){
+        for (News n : this.news){
 
-            if (n.getId()==noticia.getId()){
+            if (n.getId()== news.getId()){
 
                 if (n.getTitle()!=null){
 
-                    n.setTitle(noticia.getTitle());
+                    n.setTitle(news.getTitle());
                 }
 
                 if (n.getSummary()!=null){
 
-                    n.setSummary(noticia.getSummary());
+                    n.setSummary(news.getSummary());
                 }
 
                 if (n.getSource()!=null){
 
-                    n.setSource(noticia.getSource());
+                    n.setSource(news.getSource());
                 }
                 if (n.getTimeAgo()!=null){
 
-                    n.setTimeAgo(noticia.getTimeAgo());
+                    n.setTimeAgo(news.getTimeAgo());
                 }
 
 
@@ -267,14 +266,14 @@ public class FixtureServiceImpl implements I_FixtureService {
 
 
 @Override
-    public List <Jugador> findAllJugadores () {
+    public List <Player> findAllPlayers () {
 
-        return jugadores;
+        return players;
     }
 
 @Override
-    public Jugador getJugadorId(Integer id) {
-        for (Jugador j : jugadores){
+    public Player getPlayerId(Integer id) {
+        for (Player j : players){
 
             if (j.getId()==id){
 
@@ -288,23 +287,23 @@ public class FixtureServiceImpl implements I_FixtureService {
     }
 
     @Override
-    public Jugador postJugador (Jugador jugador){
-        jugador.setId(jugadorIdCounter.incrementAndGet());
-        jugadores.add(jugador);
+    public Player postPlayer (Player player){
+        player.setId(playerIdCounter.incrementAndGet());
+        players.add(player);
 
-        return jugador;
+        return player;
 
     }
     @Override
-    public Jugador putJugador (Jugador jugador){
+    public Player putPlayer (Player player){
 
-        for (Jugador j : jugadores){
-            if (j.getId()==jugador.getId()){
-                j.setName(jugador.getName());
-                j.setPosition(jugador.getPosition());
-                j.setAge(jugador.getAge());
-                j.setCountryFlag(jugador.getCountryFlag());
-                j.setPhotoPath(jugador.getPhotoPath());
+        for (Player j : players){
+            if (j.getId()== player.getId()){
+                j.setName(player.getName());
+                j.setPosition(player.getPosition());
+                j.setAge(player.getAge());
+                j.setCountryFlag(player.getCountryFlag());
+                j.setPhotoPath(player.getPhotoPath());
 
 
                 return j;
@@ -316,13 +315,13 @@ public class FixtureServiceImpl implements I_FixtureService {
     }
 
     @Override
-    public Jugador deleteJugadorId (Integer id){
+    public Player deletePlayerId (Integer id){
 
-        for (Jugador j : jugadores){
+        for (Player j : players){
 
             if (j.getId()==id){
 
-                jugadores.remove(j);
+                players.remove(j);
 
                 return j;
             }
@@ -331,26 +330,26 @@ public class FixtureServiceImpl implements I_FixtureService {
         return null;
     }
 @Override
-    public Jugador patchJugador (Jugador jugador){
+    public Player patchPlayer (Player player){
 
-        for (Jugador j : jugadores){
+        for (Player j : players){
 
-            if (j.getId()==jugador.getId()){
+            if (j.getId()== player.getId()){
 
-                if (jugador.getName()!=null){
+                if (player.getName()!=null){
 
-                    j.setName(jugador.getName());
+                    j.setName(player.getName());
 
                 }
 
                 if (j.getPosition()!=null){
 
-                    j.setPosition(jugador.getPosition());
+                    j.setPosition(player.getPosition());
                 }
 
                 if (j.getAge()!=null){
 
-                    j.setAge(jugador.getAge());
+                    j.setAge(player.getAge());
 
                 }
 

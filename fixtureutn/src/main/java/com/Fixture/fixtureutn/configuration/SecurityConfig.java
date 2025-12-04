@@ -19,6 +19,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/api/fixture/data/**").permitAll()
                         // Permitir acceso público a CSS, JS, Imágenes y las vistas públicas
                         .requestMatchers("/", "/home", "/api/fixture/**", "/img/**", "/css/**", "/js/**").permitAll()
                         // Todo lo que empiece con /admin requiere autenticación

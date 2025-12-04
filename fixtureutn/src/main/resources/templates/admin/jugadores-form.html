@@ -10,16 +10,16 @@
                 <div class="card-header bg-primary text-white py-3">
                     <h4 class="mb-0">
                         <i class="fas fa-user-edit me-2"></i>
-                        <span th:text="${jugador.id == null ? 'Nuevo Jugador' : 'Editar Jugador'}">Título</span>
+                        <span th:text="${player.id == null ? 'Nuevo Jugador' : 'Editar Jugador'}">Título</span>
                     </h4>
                 </div>
                 <div class="card-body p-4">
 
                     <!-- FORMULARIO DINÁMICO (POST o PUT) -->
-                    <form th:action="${jugador.id == null} ? @{/admin/jugadores/guardar} : @{/admin/jugadores/actualizar}"
-                          th:method="${jugador.id == null} ? 'post' : 'put'"
+                    <form th:action="${player.id == null} ? @{/admin/players/guardar} : @{/admin/players/actualizar}"
+                          th:method="${player.id == null} ? 'post' : 'put'"
                           enctype="multipart/form-data"
-                          th:object="${jugador}">
+                          th:object="${player}">
 
                         <!-- Campos ocultos necesarios -->
                         <input type="hidden" th:field="*{id}">
@@ -54,17 +54,17 @@
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Foto del Jugador</label>
                                 <input type="file" name="photoFile" class="form-control" accept="image/*">
-                                <div th:if="${jugador.photoPath != null}" class="mt-2">
+                                <div th:if="${player.photoPath != null}" class="mt-2">
                                     <small class="text-muted">Actual:</small>
-                                    <img th:src="@{${jugador.photoPath}}" height="50" class="rounded">
+                                    <img th:src="@{${player.photoPath}}" height="50" class="rounded">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Bandera País</label>
                                 <input type="file" name="flagFile" class="form-control" accept="image/*">
-                                <div th:if="${jugador.countryFlag != null}" class="mt-2">
+                                <div th:if="${player.countryFlag != null}" class="mt-2">
                                     <small class="text-muted">Actual:</small>
-                                    <img th:src="@{${jugador.countryFlag}}" height="30" class="border">
+                                    <img th:src="@{${player.countryFlag}}" height="30" class="border">
                                 </div>
                             </div>
                         </div>
