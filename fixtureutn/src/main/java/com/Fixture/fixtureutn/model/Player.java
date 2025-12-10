@@ -1,6 +1,11 @@
 package com.Fixture.fixtureutn.model;
+import jakarta.persistence.*;
 
+@Entity // 1. esto es una tabla
+@Table (name="players") // Nombre de la tabla en plural
 public class Player {
+    @Id // esto es la Primarykey
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Hacemos la id autoIncremental
     private Integer id;
     private String name;
     private String position;

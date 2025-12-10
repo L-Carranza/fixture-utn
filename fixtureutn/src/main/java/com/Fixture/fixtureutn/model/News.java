@@ -1,7 +1,10 @@
 package com.Fixture.fixtureutn.model;
-
+import jakarta.persistence.*;
+@Entity
+@Table(name ="news")
 public class News {
-
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY) // AutoIncremental
     private Integer id;
     private String title;
     private String summary;

@@ -20,6 +20,7 @@ public class PlayerRestController {
 
         @Autowired
         private I_FixtureService fixtureService;
+
         @Autowired
         private ImageStoreageService imageStorageService;
 

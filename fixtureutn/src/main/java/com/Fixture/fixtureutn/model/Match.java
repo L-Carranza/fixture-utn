@@ -1,6 +1,12 @@
 package com.Fixture.fixtureutn.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="matches")
 public class Match {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremental
     private Integer id;
     private String home;
     private String away;
